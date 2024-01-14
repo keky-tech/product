@@ -10,6 +10,7 @@ use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Response;
 use Illuminate\Routing\Controller as BaseController;
 use Keky\Product\Http\Requests\ProductCollectionRequest;
+use Keky\Product\Http\Requests\ProductOptionRequest;
 use Keky\Product\Http\Requests\ProductRequest;
 use Keky\Product\Models\Product;
 
@@ -93,6 +94,21 @@ class ProductsController extends BaseController
         // Sync product with collections
         $collections = $product->collections()->sync($request->get('collection_ids'));
         if (! empty($collections)) {
+            return response('success', 200);
+        }
+
+        return response('internal_server_error', 500);
+    }
+
+    public function attachOptions(ProductOptionRequest $request, int $id): \Illuminate\Foundation\Application|Response|Application|ResponseFactory
+    {
+        $product = $this->product->newQuery()->where(['id' => $id])->first();
+        if (! $product) {
+            return response('not_found', 404);
+        }
+
+        $options = $product->options()->sync($request->get('option_ids'));
+        if (! empty($options)) {
             return response('success', 200);
         }
 

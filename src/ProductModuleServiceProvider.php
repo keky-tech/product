@@ -22,6 +22,8 @@ class ProductModuleServiceProvider extends PackageServiceProvider
             ->hasMigrations([
                 '2023_12_03_000001_create_products_table',
                 '2023_12_05_000002_create_collections_table',
+                '2024_01_13_163403_create_options_table',
+                '2024_01_13_163403_create_options_values_table',
             ])
             ->runsMigrations()
             ->hasCommand(ProductModuleCommand::class);

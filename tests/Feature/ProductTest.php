@@ -1,6 +1,7 @@
 <?php
 
 use Keky\Product\Models\Collection;
+use Keky\Product\Models\Option;
 use Keky\Product\Models\Product;
 
 uses(\Keky\Product\Tests\TestCase::class)->in('Feature');
@@ -178,3 +179,40 @@ describe('Products with collections', function () {
         expect($product->collections()->count())->toBeInt()->toBe(4);
     });
 });
+
+
+describe('Attach one product to many options', function () {
+    it('Sync option with fake product id', function () {
+        $options = Option::factory(2)->create();
+
+        $response = $this->post('/products/777/options', [
+            'option_ids' => $options->pluck('id')->all(),
+        ]);
+
+        $response->assertNotFound();
+        expect(Product::count())->toBeInt()->toBe(0);
+    });
+
+    it('Sync product options with fake option ids', function () {
+        $product = Product::factory()->create();
+        $response = $this->post('/products/'.$product->id.'/options', [
+            'option_ids' => ['778', '65890'],
+        ]);
+
+        $response->assertBadRequest();
+        expect($product->options()->count())->toBeInt()->toBe(0);
+    });
+
+    it('Sync product with options', function () {
+        $product = Product::factory()->create();
+        $options = Option::factory(2)->create();
+
+        $response = $this->post('/products/'.$product->id.'/options', [
+            'option_ids' => $options->pluck('id')->all(),
+        ]);
+
+        $response->assertOk();
+        expect($product->options()->count())->toBeInt()->toBe(2);
+    });
+});
+
