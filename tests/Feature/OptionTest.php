@@ -71,4 +71,3 @@ describe('Attach one option to many products', function () {
         expect($option->productsOpt()->count())->toBeInt()->toBe(2);
     });
 });
-

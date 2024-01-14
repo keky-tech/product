@@ -32,5 +32,4 @@ class OptionsValueController extends BaseController
             'data' => $optionValue->toArray(),
         ], Response::HTTP_CREATED);
     }
-
 }

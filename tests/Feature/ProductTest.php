@@ -180,7 +180,6 @@ describe('Products with collections', function () {
     });
 });
 
-
 describe('Attach one product to many options', function () {
     it('Sync option with fake product id', function () {
         $options = Option::factory(2)->create();
@@ -215,4 +214,3 @@ describe('Attach one product to many options', function () {
         expect($product->options()->count())->toBeInt()->toBe(2);
     });
 });
-

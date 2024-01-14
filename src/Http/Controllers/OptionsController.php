@@ -37,7 +37,6 @@ class OptionsController extends BaseController
         ], Response::HTTP_CREATED);
     }
 
-
     public function attachProducts(OptionProductRequest $request, int $id): FoundationApplication|\Illuminate\Http\Response|Application|ResponseFactory
     {
         $option = $this->option->newQuery()->where(['id' => $id])->first();
@@ -51,5 +50,4 @@ class OptionsController extends BaseController
 
         return response('internal_server_error', 500);
     }
-
 }

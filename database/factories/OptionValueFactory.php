@@ -15,7 +15,7 @@ class OptionValueFactory extends Factory
         return [
             'value' => fake()->text(rand(20, 150)),
             'metadata' => rand(0, 1) ? '{"key":"value"}' : null,
-            'option_id' => Option::factory()
+            'option_id' => Option::factory(),
         ];
     }
 }

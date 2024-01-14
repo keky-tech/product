@@ -20,8 +20,7 @@ return new class extends Migration
             $table
                 ->foreign('option_id')
                 ->references('id')
-                ->on('options')
-            ;
+                ->on('options');
         });
     }
 
