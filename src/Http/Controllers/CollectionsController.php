@@ -19,9 +19,7 @@ class CollectionsController extends BaseController
 {
     use AuthorizesRequests, ValidatesRequests;
 
-    public function __construct(private Collection $collection)
-    {
-    }
+    public function __construct(private Collection $collection) {}
 
     public function store(CollectionRequest $collectionRequest): Application|ResponseFactory|FoundationApplication|Response|JsonResponse
     {

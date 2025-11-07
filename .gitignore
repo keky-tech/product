@@ -1,5 +1,7 @@
 .idea
 .phpunit.cache
+.tool-versions
+auth.json
 build
 composer.lock
 coverage

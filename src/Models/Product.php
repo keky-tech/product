@@ -6,10 +6,13 @@ use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Keky\Product\Database\Factories\ProductFactory;
+use Keky\QueryMaster\Concerns\HasFilters;
+use Keky\QueryMaster\Concerns\IsSearchable;
+use Keky\QueryMaster\Concerns\IsSortable;
 
 class Product extends Model
 {
-    use HasFactory;
+    use HasFactory, HasFilters, IsSearchable, IsSortable;
 
     protected $fillable = [
         'title',
@@ -24,6 +27,11 @@ class Product extends Model
         'width',
         'type_id',
         'metadata',
+        'price',
+        'buy_price',
+        'sku',
+        'unit',
+        'currency',
     ];
 
     /**

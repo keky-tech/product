@@ -1,8 +1,0 @@
-parameters:
-  convention.git_commit_message_matchers: ['/^BCO-\d+: [a-z]+/']
-grumphp:
-    tasks:
-      git_commit_message:
-        matchers: "%convention.git_commit_message_matchers%"
-        case_insensitive: false
-        multiline: false

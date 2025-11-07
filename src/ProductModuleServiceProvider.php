@@ -2,28 +2,18 @@
 
 namespace Keky\Product;
 
-use Keky\Product\Commands\ProductModuleCommand;
-use Spatie\LaravelPackageTools\Package;
-use Spatie\LaravelPackageTools\PackageServiceProvider;
+use Illuminate\Support\ServiceProvider;
 
-class ProductModuleServiceProvider extends PackageServiceProvider
+class ProductModuleServiceProvider extends ServiceProvider
 {
-    public function configurePackage(Package $package): void
+    public function register(): void {}
+
+    public function boot(): void
     {
-        /*
-         * This class is a Package Service Provider
-         *
-         */
-        $package
-            ->name('product-module')
-            ->hasConfigFile()
-            ->hasViews()
-            ->hasRoutes(['web', 'api'])
-            ->hasMigrations([
-                '2023_12_03_000001_create_products_table',
-                '2023_12_05_000002_create_collections_table',
-            ])
-            ->runsMigrations()
-            ->hasCommand(ProductModuleCommand::class);
+        $this->loadRoutesFrom(__DIR__.'/../routes/api.php');
+
+        $this->publishes([
+            __DIR__.'/../database/migrations' => database_path('migrations'),
+        ], 'product-migrations');
     }
 }
