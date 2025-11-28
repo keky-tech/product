@@ -84,10 +84,10 @@
     "extra": {
         "laravel": {
             "providers": [
-                "Keky\\Product\\ProductModule\\ProductModuleServiceProvider"
+                "Keky\\Product\\ProductModuleServiceProvider"
             ],
             "aliases": {
-                "ProductModule": "Keky\\Product\\ProductModule\\Facades\\ProductModule"
+                "ProductModule": "Keky\\Product\\Facades\\ProductModule"
             }
         }
     },

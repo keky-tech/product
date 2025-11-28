@@ -1,6 +1,6 @@
 <?php
 
-// config for Keky\Product/ProductModule
+// config for Keky\Product
 
 return [
 

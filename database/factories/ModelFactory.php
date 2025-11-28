@@ -1,6 +1,6 @@
 <?php
 
-namespace Keky\Product\ProductModule\Database\Factories;
+namespace Keky\Product\Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
 
